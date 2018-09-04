@@ -1,15 +1,11 @@
 import os
 
 
-BASE_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
+SECRET_KEY = os.getenv('SECRET_KEY', 'placeholder')
 
+SLACK_CLIENT_ID = os.getenv('SLACK_CLIENT_ID')
+SLACK_CLIENT_SECRET = os.getenv('SLACK_CLIENT_SECRET')
 
-class BaseConfig:
-    SQLALCHEMY_DATABASE_URI = os.getenv(
-        'DATABASE_URI',
-        'sqlite:///{}'.format(os.path.join(BASE_DIRECTORY, 'database.sqlite3')))
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-
-class DefaultConfig(BaseConfig):
-    pass
+SQLALCHEMY_DATABASE_URI = os.getenv(
+    'DATABASE_URI', 'sqlite:///{}'.format(os.path.abspath('database.sqlite3')))
+SQLALCHEMY_TRACK_MODIFICATIONS = False
