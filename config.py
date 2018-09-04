@@ -6,6 +6,10 @@ import re
 AUTH_EMAIL_PATTERN = re.compile(os.getenv('AUTH_EMAIL_PATTERN', '.+@buffalo.edu$'))
 
 
+# List of extensions to be enabled; if empty, a default list of extensions will be enabled.
+ENABLED_EXTENSIONS = list(filter(None, re.split(' *, *', os.getenv('ENABLED_EXTENSIONS', ''))))
+
+
 SECRET_KEY = os.getenv('SECRET_KEY', 'placeholder')
 
 SLACK_CLIENT_ID = os.getenv('SLACK_CLIENT_ID')
