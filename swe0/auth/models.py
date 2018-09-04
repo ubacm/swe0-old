@@ -1,0 +1,8 @@
+from swe0 import db
+
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(255), nullable=False, unique=True)
+    name = db.Column(db.String(100), nullable=False)  # Note: Slack's limit is 80 chars.
+    is_admin = db.Column(db.Boolean, nullable=False, server_default='0')
