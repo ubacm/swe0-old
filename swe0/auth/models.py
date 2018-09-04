@@ -1,7 +1,9 @@
+from flask_login import UserMixin
+
 from swe0 import db
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     name = db.Column(db.String(100), nullable=False)  # Note: Slack's limit is 80 chars.

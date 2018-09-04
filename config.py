@@ -1,4 +1,9 @@
 import os
+import re
+
+
+# Only log-in attempts with email addresses that match this pattern will be accepted.
+AUTH_EMAIL_PATTERN = re.compile(os.getenv('AUTH_EMAIL_PATTERN', '.+@buffalo.edu$'))
 
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'placeholder')

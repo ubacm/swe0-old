@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Log In</title>
+</head>
+<body>
+  <p>
+    {% if current_user.is_authenticated %}
+      You are currently logged in as {{ current_user.name }} &lt;{{ current_user.email }}&gt;.
+      <a href="{{ url_for('.log_out') }}">Log out</a>
+    {% else %}
+      You are not logged in.
+    {% endif %}
+  </p>
+  <a href="{{ url_for('.log_in_slack') }}">
+    <img src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+         srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x">
+  </a>
+</body>
+</html>
