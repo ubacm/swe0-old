@@ -25,6 +25,7 @@ def log_in_slack():
 
 @auth_blueprint.route('/authorize/slack')
 def authorize_slack():
+    # TODO: let the end user what happened if there was a failure.
     try:
         token = oauth.slack.authorize_access_token()
     except KeyError:
@@ -34,16 +35,18 @@ def authorize_slack():
         email = token['user']['email']
         name = token['user']['name']
 
-        if app.config['AUTH_EMAIL_PATTERN'].match(email):
-            user = User.query.filter_by(email=email).first()
-            if user is None:
+        user = User.query.filter_by(email=email).first()
+        if user is None:
+            # Only create an account if the pattern is matched.
+            if app.config['AUTH_EMAIL_PATTERN'].match(email):
                 user = User(email=email, name=name)
                 db.session.add(user)
                 db.session.commit()
-            elif user.name != name:
-                user.name = name
-                db.session.commit()
+        elif user.name != name:
+            user.name = name
+            db.session.commit()
 
+        if user is not None:
             login_user(user)
 
     return redirect(url_for('.log_in'))
