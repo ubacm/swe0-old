@@ -6,6 +6,10 @@ import re
 AUTH_EMAIL_PATTERN = re.compile(os.getenv('AUTH_EMAIL_PATTERN', '.+@buffalo.edu$'))
 
 
+# Prevent Flask-RESTful from adding to error responses.
+ERROR_404_HELP = False
+
+
 # List of extensions to be enabled; if empty, a default list of extensions will be enabled.
 ENABLED_EXTENSIONS = list(filter(None, re.split(' *, *', os.getenv('ENABLED_EXTENSIONS', ''))))
 
