@@ -10,5 +10,6 @@ flask-login = "*"
 flask-migrate = "*"
 flask-script = "*"
 flask-sqlalchemy = "*"
+flask-restful = "*"
 
 [dev-packages]
