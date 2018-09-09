@@ -16,8 +16,13 @@ ENABLED_EXTENSIONS = list(filter(None, re.split(' *, *', os.getenv('ENABLED_EXTE
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'placeholder')
 
+
+# Client IDs and secrets for OAuth.
+GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
+GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
 SLACK_CLIENT_ID = os.getenv('SLACK_CLIENT_ID')
 SLACK_CLIENT_SECRET = os.getenv('SLACK_CLIENT_SECRET')
+
 
 SQLALCHEMY_DATABASE_URI = os.getenv(
     'DATABASE_URI', 'sqlite:///{}'.format(os.path.abspath('database.sqlite3')))

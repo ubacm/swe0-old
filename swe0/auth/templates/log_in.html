@@ -3,8 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Log In</title>
+  <style>
+    .sign-in-buttons {
+      display: flex;
+    }
+    .sign-in-buttons img {
+      height: 2.5rem;
+    }
+  </style>
 </head>
 <body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
   <p>
     {% if current_user.is_authenticated %}
       You are currently logged in as {{ current_user.name }} &lt;{{ current_user.email }}&gt;.
@@ -13,9 +31,21 @@
       You are not logged in.
     {% endif %}
   </p>
-  <a href="{{ url_for('.log_in_slack') }}">
-    <img src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
-         srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x">
-  </a>
+
+  <div class="sign-in-buttons">
+    <div>
+      <a href="{{ url_for('.log_in_google') }}">
+        <img src="{{ url_for('static', filename='sign_in_with_google.png') }}"
+             alt="Sign in with Google">
+      </a>
+    </div>
+    <div>
+      <a href="{{ url_for('.log_in_slack') }}">
+        <img src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+             srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
+             alt="Sign in with Slack">
+      </a>
+    </div>
+  </div>
 </body>
 </html>

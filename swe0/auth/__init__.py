@@ -17,7 +17,18 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 
-# Set up Slack OAuth
+# Set up Google OAuth.
+oauth.register(
+    'google',
+    access_token_url='https://www.googleapis.com/oauth2/v4/token',
+    authorize_url='https://accounts.google.com/o/oauth2/v2/auth',
+    api_base_url='https://www.googleapis.com/',
+    client_kwargs={
+        'scope': 'email openid profile',
+    },
+)
+
+# Set up Slack OAuth.
 oauth.register(
     'slack',
     access_token_url='https://slack.com/api/oauth.access',
@@ -28,6 +39,7 @@ oauth.register(
         'token_endpoint_auth_method': 'client_secret_post',
     },
 )
+
 
 # Ensure these are available when the blueprint is being registered.
 from . import views
