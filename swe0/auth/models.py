@@ -4,6 +4,8 @@ from swe0 import db
 
 
 class User(UserMixin, db.Model):
+    __tablename__ = 'auth_user'
+
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     name = db.Column(db.String(100), nullable=False)  # Note: Slack's limit is 80 chars.

@@ -2,6 +2,8 @@ from swe0 import db
 
 
 class Event(db.Model):
+    __tablename__ = 'events_event'
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(500), nullable=False)
