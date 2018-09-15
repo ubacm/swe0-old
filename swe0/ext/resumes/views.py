@@ -8,6 +8,12 @@ from swe0 import app
 from . import resumes_blueprint
 
 
+@resumes_blueprint.route('')
+@login_required
+def index():
+    return render_template('index.html')
+
+
 @resumes_blueprint.route('/upload', methods=['GET', 'POST'])
 @login_required
 def upload():

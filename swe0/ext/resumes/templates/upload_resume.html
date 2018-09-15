@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Resume</title>
+  <style>
+    label > * {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" enctype="multipart/form-data">
+    <label>
+      Resume
+      <input type="file" name="resume" required accept=".pdf, application/pdf">
+    </label>
+
+    <button>Upload</button>
+  </form>
+</body>
+</html>
