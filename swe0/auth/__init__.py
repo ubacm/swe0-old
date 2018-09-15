@@ -8,6 +8,7 @@ from .models import User
 auth_blueprint = Blueprint('auth', __name__, template_folder='templates')
 
 login_manager = LoginManager()
+login_manager.login_view = 'auth.log_in'
 
 oauth = OAuth()
 
