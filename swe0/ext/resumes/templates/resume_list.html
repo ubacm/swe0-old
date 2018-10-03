@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume list</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Resume</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for resume in resume_list %}
+      <tr>
+        <td>{{ resume.user.name }}</td>
+        <td><a href="mailto:{{ resume.user.email }}">{{ resume.user.email }}</a></td>
+        <td><a href="{{ resume.url_path }}" target="_blank">Resume</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

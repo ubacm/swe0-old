@@ -4,6 +4,7 @@ from flask import abort, redirect, render_template, request, send_file
 from flask_login import current_user, login_required
 
 from swe0 import db
+from swe0.auth.models import User
 from . import resumes_blueprint
 from .models import Resume
 
@@ -35,6 +36,15 @@ def upload():
             db.session.commit()
             return redirect(resume.url_path)
     return render_template('upload_resume.html')
+
+
+@resumes_blueprint.route('/view')
+@login_required
+def view_list():
+    if not current_user.is_admin:
+        abort(403)
+    resume_list = Resume.query.join(User, Resume.user).order_by(User.email).all()
+    return render_template('resume_list.html', resume_list=resume_list)
 
 
 @resumes_blueprint.route('/view/<filename>')
