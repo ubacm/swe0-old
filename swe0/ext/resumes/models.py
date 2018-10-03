@@ -8,6 +8,8 @@ from swe0.auth.models import User
 
 
 class Resume(db.Model):
+    __tablename__ = 'resumes_resume'
+
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(User.__tablename__ + '.id'))
     filename = db.Column(db.String(50), nullable=False)
