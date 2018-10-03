@@ -1,13 +1,25 @@
-from flask import flash, redirect, render_template, url_for
-from flask_login import login_user, logout_user
+from flask import flash, redirect, render_template, request, session, url_for
+from flask_login import current_user, login_user, logout_user
 
 from swe0 import app, db
 from . import auth_blueprint, oauth
 from .models import User
 
 
+__LOG_IN_REDIRECT_SESSION_KEY = 'swe0_auth_log_in_redirect'
+
+
 @auth_blueprint.route('/log-in')
 def log_in():
+    # Redirect user to the page from the "next" param after login.
+    next_path = request.args.get('next')
+    if next_path and next_path.startswith('/'):
+        session[__LOG_IN_REDIRECT_SESSION_KEY] = next_path
+    if current_user.is_authenticated:
+        next_path = session.pop(__LOG_IN_REDIRECT_SESSION_KEY, None)
+        if next_path:
+            return redirect(next_path)
+
     return render_template('log_in.html')
 
 
