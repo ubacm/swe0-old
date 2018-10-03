@@ -7,7 +7,7 @@
 <body>
   <ul>
     <li><a href="{{ url_for('.upload') }}">Upload your resume</a></li>
-    <li><a href="{{ url_for('.view') }}">View your resume</a></li>
+    {% if resume %}<li><a href="{{ resume.url_path }}">View your resume</a></li>{% endif %}
   </ul>
 </body>
 </html>
