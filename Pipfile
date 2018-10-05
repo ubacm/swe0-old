@@ -11,5 +11,7 @@ flask-migrate = "*"
 flask-script = "*"
 flask-sqlalchemy = "*"
 flask-restful = "*"
+"psycopg2-binary" = "*"
+gunicorn = "*"
 
 [dev-packages]
