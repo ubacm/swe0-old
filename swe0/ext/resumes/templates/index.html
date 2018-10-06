@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Resumes</title>
+  <link rel="stylesheet" type="text/css" href="/static/styles/index.css">
 </head>
 <body>
-  <ul>
-    <li><a href="{{ url_for('.upload') }}">Upload your resume</a></li>
-    {% if resume %}<li><a href="{{ resume.url_path }}">View your resume</a></li>{% endif %}
-    {% if current_user.is_admin %}<li><a href="{{ url_for('.view_list') }}">View all resumes</a></li>{% endif %}
-  </ul>
+  <div class="page">
+    <div class="page-content">
+      <h1>Resumes</h1>
+      <br />
+      <a class="button" href="{{ url_for('.upload') }}">Upload Resume</a>
+      {% if resume %}<a class="button" href="{{ resume.url_path }}" target="_blank">View Resume</a>{% endif %}
+      {% if current_user.is_admin %}<a class="button" href="{{ url_for('.view_list') }}">View All Resumes</a>{% endif %}
+    </div>
+  </div>
 </body>
 </html>
