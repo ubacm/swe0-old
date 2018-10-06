@@ -1,6 +1,6 @@
 import os
 
-from flask import abort, redirect, render_template, request, send_file
+from flask import abort, redirect, render_template, request, send_file, url_for
 from flask_login import current_user, login_required
 
 from swe0 import db
@@ -34,7 +34,7 @@ def upload():
             resume.filename = new_filename
             file.save(resume.file_path)
             db.session.commit()
-            return redirect(resume.url_path)
+            return redirect(url_for('resumes.index'))
     return render_template('upload_resume.html')
 
 
