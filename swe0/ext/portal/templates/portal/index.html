@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}swe0{% endblock %}
+
+{% block content %}
+<h1>swe0</h1>
+<ul>
+{% for extension in extensions %}
+  <li><a href="{{extension.path}}">{{extension.title}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

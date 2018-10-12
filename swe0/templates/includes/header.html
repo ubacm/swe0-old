@@ -1,0 +1,28 @@
+<div class="component__header">
+    <div class="container">
+      <div class="wrapper">
+        <div class="branding">
+          <a href="/"><img class="logo" src="/static/assets/ubacm.png" /></a>
+        </div>
+        <div class="navigation">
+          <ul class="links">
+            <li><a href="https://ubacm.org/">Return to UB ACM</a></li>
+          </ul>
+          <ul class="links">
+            {% if current_user.is_authenticated %}
+            <li>{{ current_user.name }} &lt;{{ current_user.email }}&gt;</li>
+            {% else %}
+            <li>You are not logged in</li>
+            {% endif %}
+          </ul>
+          <ul class="links">
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('auth.log_out') }}">Log Out</a></li>
+            {% else %}
+            <li><a href="{{ url_for('auth.log_in', next='/') }}">Log In</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
