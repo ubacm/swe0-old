@@ -1,7 +1,4 @@
-import os
-
 from flask import render_template
-from flask_login import current_user, login_required
 
 from swe0 import enabled_extensions
 from . import portal_blueprint
