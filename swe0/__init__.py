@@ -18,10 +18,11 @@ login_manager.init_app(app)
 oauth.init_app(app)
 app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
+enabled_extensions = []
 
 # Use default extensions if no extensions were explicitly enabled.
 if not app.config['ENABLED_EXTENSIONS']:
     app.config['ENABLED_EXTENSIONS'] = ['portal']
 
 for extension in app.config['ENABLED_EXTENSIONS']:
-    enable_extension(app, extension)
+    enabled_extensions.append(enable_extension(app, extension))
