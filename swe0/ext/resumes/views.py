@@ -13,7 +13,7 @@ from .models import Resume
 @login_required
 def index():
     resume = Resume.query.filter_by(user=current_user).first()
-    return render_template('index.html', resume=resume)
+    return render_template('resumes/index.html', resume=resume)
 
 
 @resumes_blueprint.route('/upload', methods=['GET', 'POST'])
@@ -35,7 +35,7 @@ def upload():
             file.save(resume.file_path)
             db.session.commit()
             return redirect(url_for('resumes.index'))
-    return render_template('upload_resume.html')
+    return render_template('resumes/upload_resume.html')
 
 
 @resumes_blueprint.route('/view')
@@ -44,7 +44,7 @@ def view_list():
     if not current_user.is_admin:
         abort(403)
     resume_list = Resume.query.join(User, Resume.user).order_by(User.email).all()
-    return render_template('resume_list.html', resume_list=resume_list)
+    return render_template('resumes/resume_list.html', resume_list=resume_list)
 
 
 @resumes_blueprint.route('/view/<filename>')

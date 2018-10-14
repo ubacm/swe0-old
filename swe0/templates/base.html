@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}swe0{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="/static/styles/electricblue.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/styles/index.css">
+</head>
+<body>
+  {% include "includes/header.html" %}
+  <div class="container offset_header">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
