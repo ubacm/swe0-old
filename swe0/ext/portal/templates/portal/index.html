@@ -5,7 +5,7 @@
 <h1>swe0</h1>
 <ul>
 {% for extension in extensions %}
-  <li><a href="{{extension.path}}">{{extension.title}}</a></li>
+  <li><a href="{{extension.path}}">{{extension.pretty_name}}</a> {{extension.description}}</li>
 {% endfor %}
 </ul>
 {% endblock %}
