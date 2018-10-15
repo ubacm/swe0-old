@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Upload Resume</title>
-  <link rel="stylesheet" type="text/css" href="/static/styles/index.css">
-</head>
-<body>
-<div class="page">
-  <div class="page-content">
-    <a href="{{ url_for('.index') }}">&lt; Back to Resumes</a>
-    <br />
-    <h1>Upload Resume</h1>
-    <p>Upload your resume here to be included in the chapter resume book.</p>
-    <br />
-    <form method="post" enctype="multipart/form-data">
-      <label>
-        Resume
-        <input type="file" name="resume" required accept=".pdf, application/pdf">
-      </label>
-      <br />
-      <br />
-      <button class="button">Upload</button>
-    </form>
-  </div>
-</div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Resumes{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('.index') }}">&lt; Back to Resumes</a>
+<br />
+<br />
+<h1>Upload Resume</h1>
+<p>Upload your resume here to be included in the chapter resume book.</p>
+<br />
+<form method="post" enctype="multipart/form-data">
+  <label>
+    <input type="file" name="resume" required accept=".pdf, application/pdf">
+  </label>
+  <button class="button button_primary">Upload</button>
+</form>
+{% endblock %}

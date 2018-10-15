@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Resumes</title>
-  <link rel="stylesheet" type="text/css" href="/static/styles/index.css">
-</head>
-<body>
-  <div class="page">
-    <div class="page-content">
-      <h1>Resumes</h1>
-      <br />
-      <a class="button" href="{{ url_for('.upload') }}">Upload Resume</a>
-      {% if resume %}<a class="button" href="{{ resume.url_path }}" target="_blank">View Resume</a>{% endif %}
-      {% if current_user.is_admin %}<a class="button" href="{{ url_for('.view_list') }}">View All Resumes</a>{% endif %}
-    </div>
-  </div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Resumes{% endblock %}
+
+{% block content %}
+<h1>Resumes</h1>
+<a class="button button_primary" href="{{ url_for('.upload') }}">Upload Resume</a>
+{% if resume %}<a class="button" href="{{ resume.url_path }}" target="_blank">View Resume</a>{% endif %}
+{% if current_user.is_admin %}<a class="button" href="{{ url_for('.view_list') }}">View All Resumes</a>{% endif %}
+{% endblock %}

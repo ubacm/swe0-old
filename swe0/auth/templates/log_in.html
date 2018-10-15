@@ -1,48 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Log In</title>
-  <link rel="stylesheet" type="text/css" href="/static/styles/index.css" >
-</head>
-<body>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
+{% extends "base.html" %}
+{% block title %}Resumes{% endblock %}
 
-  <div class="auth">
-    <div class="auth-modal">
-      <p>
-        {% if current_user.is_authenticated %}
-        You are currently logged in as {{ current_user.name }} &lt;{{ current_user.email }}&gt;.
-        <a href="{{ url_for('.log_out') }}">Log out</a>
-        {% else %}
-        You are not logged in.
-        {% endif %}
-      </p>
-      <br />
-      <div class="sign-in-buttons">
-        <div>
-          <a href="{{ url_for('.log_in_slack') }}">
-            <img src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
-            srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
-            alt="Sign in with Slack">
-          </a>
-        </div>
-        <div>
-          <a href="{{ url_for('.log_in_google') }}">
-            <img src="{{ url_for('static', filename='sign_in_with_google.png') }}"
-            alt="Sign in with Google">
-          </a>
-        </div>
-      </div>
+{% block content %}
+{% if current_user.is_authenticated %}
+<p>
+  You are currently logged in as {{ current_user.name }} &lt;{{ current_user.email }}&gt;.
+  <a href="{{ url_for('.log_out') }}">Log out</a>
+</p>
+{% else %}
+<div class="dialog">
+  <div class="auth_sign_in">
+    <h3>Sign in with SSO</h3>
+    <p>You are not logged in.</p>
+    <div class="buttons">
+      <a href="{{ url_for('.log_in_slack') }}">
+        <img src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+        srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
+        alt="Sign in with Slack">
+      </a>
+      <a href="{{ url_for('.log_in_google') }}">
+        <img src="{{ url_for('static', filename='sign_in_with_google.png') }}"
+        alt="Sign in with Google">
+      </a>
     </div>
   </div>
-</body>
-</html>
+</div>
+{% endif %}
+{% endblock %}

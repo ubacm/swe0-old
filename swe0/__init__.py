@@ -22,7 +22,7 @@ enabled_extensions = []
 
 # Use default extensions if no extensions were explicitly enabled.
 if not app.config['ENABLED_EXTENSIONS']:
-    app.config['ENABLED_EXTENSIONS'] = ['portal']
+    app.config['ENABLED_EXTENSIONS'] = ['portal', 'resumes']
 
 for extension in app.config['ENABLED_EXTENSIONS']:
     enabled_extensions.append(enable_extension(app, extension))

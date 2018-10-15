@@ -9,7 +9,16 @@
 <body>
   {% include "includes/header.html" %}
   <div class="container contents pad_header">
-    {% block content %}{% endblock %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="notifications">
+      {% for message in messages %}
+      <div class="notification">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
   </div>
 </body>
 </html>
