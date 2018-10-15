@@ -3,9 +3,16 @@
 
 {% block content %}
 <h1>swe0</h1>
-<ul>
+<ul class="grid_list">
 {% for extension in extensions %}
-  <li><a href="{{extension.path}}">{{extension.pretty_name}}</a> {{extension.description}}</li>
+  <li>
+    <a href="{{extension.path}}">
+      <div class="item">
+        <strong>{{extension.pretty_name}}</strong>
+        <div>{{extension.description}}</div>
+      </div>
+    </a>
+  </li>
 {% endfor %}
 </ul>
 {% endblock %}
