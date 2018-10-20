@@ -1,13 +1,17 @@
 .auth_sign_in {
-  background: #eee;
+  background: #1a1a1a;
   border-radius: 6px;
   display: inline-block;
   padding: 44px;
 }
 
+.auth_sign_in .buttons {
+  margin-top: 20px;
+}
+
 .auth_sign_in .buttons a {
-  display: inline-block;
-  padding-top: 20px;
+  display: block;
+  padding-top: 10px;
   text-decoration: none;
 }
 

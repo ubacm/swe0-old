@@ -13,14 +13,14 @@
     <h3>Sign in with SSO</h3>
     <p>You are not logged in.</p>
     <div class="buttons">
+      <a href="{{ url_for('.log_in_google') }}">
+        <img src="{{ url_for('static', filename='sign_in_with_google.png') }}"
+        alt="Sign in with Google">
+      </a>
       <a href="{{ url_for('.log_in_slack') }}">
         <img src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
         srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
         alt="Sign in with Slack">
-      </a>
-      <a href="{{ url_for('.log_in_google') }}">
-        <img src="{{ url_for('static', filename='sign_in_with_google.png') }}"
-        alt="Sign in with Google">
       </a>
     </div>
   </div>

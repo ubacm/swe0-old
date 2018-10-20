@@ -9,7 +9,7 @@
           <ul class="links">
             <li><a href="https://ubacm.org/">Return to UB ACM</a></li>
           </ul>
-          <ul class="links">
+          <ul class="links hide_mobile">
             {% if current_user.is_authenticated %}
             <li>{{ current_user.name }} &lt;{{ current_user.email }}&gt;</li>
             {% else %}
