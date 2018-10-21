@@ -1,5 +1,4 @@
 import importlib
-import string
 
 
 def enable_extension(app, name):
@@ -17,7 +16,7 @@ def enable_extension(app, name):
       'description': getattr(module, 'description', ''),
       'name': name,
       'path': url_prefix,
-      'pretty_name': getattr(module, 'name', string.capwords(name)),
+      'pretty_name': getattr(module, 'name', name.title()),
     }
 
 
