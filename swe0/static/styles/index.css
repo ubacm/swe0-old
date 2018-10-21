@@ -26,3 +26,20 @@
   text-align: center;
   width: 100%;
 }
+
+.component__header {
+  border-bottom-color: #1a1a1a
+}
+
+.text_branding {
+  color: #1a1a1a;
+  padding-left: 85px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+@media (max-width: 550px) {
+  .text_branding {
+    display: none;
+  }
+}

@@ -2,12 +2,12 @@
     <div class="container">
       <div class="wrapper">
         <div class="branding">
-          <a href="/"><img class="logo" src="{{ url_for('static', filename='assets/ubacm.png') }}" /></a>
-          <strong style="padding-left: 85px;">Apps</strong>
+          <a href="/"><img class="logo" src="{{ url_for('static', filename='assets/swe0.png') }}" /></a>
+          <div class="text_branding">Apps</div>
         </div>
         <div class="navigation">
           <ul class="links">
-            <li><a href="https://ubacm.org/">Return to UB ACM</a></li>
+            <li><a href="https://ubacm.org/">Back to UB ACM</a></li>
           </ul>
           <ul class="links hide_mobile">
             {% if current_user.is_authenticated %}
