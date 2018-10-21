@@ -3,7 +3,7 @@ from flask_restful import Api
 
 
 rewards_blueprint = Blueprint('rewards', __name__)
-rewards_api = Api(rewards_blueprint)
+rewards_api = Api(rewards_blueprint, prefix='/api')
 
 
 # Ensure these are available when the blueprint is being registered.

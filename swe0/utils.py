@@ -1,5 +1,4 @@
 import importlib
-import string
 
 
 def enable_extension(app, name):
@@ -17,5 +16,14 @@ def enable_extension(app, name):
       'description': getattr(module, 'description', ''),
       'name': name,
       'path': url_prefix,
-      'pretty_name': getattr(module, 'name', string.capwords(name)),
+      'pretty_name': getattr(module, 'name', name.title()),
     }
+
+
+def foreign_key(db, model_class, column='id'):
+    """Creates the ForeignKey schema with the table name and column name.
+
+    Usage: field = db.Column(db.Integer, db_foreign_key(MyModel, 'optional_id')
+    """
+    column = '{}.{}'.format(model_class.__tablename__, column)
+    return db.ForeignKey(column)
