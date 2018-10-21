@@ -5,13 +5,14 @@ from flask import url_for
 
 from swe0 import app, db
 from swe0.auth.models import User
+from swe0.utils import foreign_key
 
 
 class Resume(db.Model):
     __tablename__ = 'resumes_resume'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(User.__tablename__ + '.id'))
+    user_id = db.Column(db.Integer, foreign_key(db, User))
     filename = db.Column(db.String(50), nullable=False)
 
     user = db.relationship(User, backref=db.backref('resume', uselist=False))
